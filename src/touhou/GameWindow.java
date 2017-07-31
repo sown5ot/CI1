@@ -24,6 +24,11 @@ public class GameWindow extends Frame {
 
     private BufferedImage background;
     private BufferedImage player;
+    private int playerX = 384 / 2;
+    private int playerY = 600;
+    private int moveX;
+    private int moveY;
+    private int backgroundY = 0;
 
     public GameWindow() {
         background = SpriteUtils.loadImage("assets/images/background/0.png");
@@ -59,12 +64,40 @@ public class GameWindow extends Frame {
 
             @Override
             public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+                    moveX = 5;
+                }
 
+                if (e.getKeyCode() == KeyEvent.VK_LEFT){
+                    moveX = -5;
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_UP){
+                    moveY = -5;
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_DOWN){
+                    moveY = 5;
+                }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+                    moveX = 0;
+                }
 
+                if (e.getKeyCode() == KeyEvent.VK_LEFT){
+                    moveX = 0;
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_UP){
+                    moveY = 0;
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_DOWN){
+                    moveY = 0;
+                }
             }
         });
     }
@@ -83,14 +116,23 @@ public class GameWindow extends Frame {
     }
 
     private void run() {
+        playerX += moveX;
+        playerY += moveY;
+        if (playerX < 0 || playerX > 384){
+            playerX = -playerX;
+        }
 
+        if (playerY < 0 || playerY > 768){
+            playerY = -playerY;
+        }
     }
 
     private void render() {
         backbufferGraphics.setColor(Color.black);
         backbufferGraphics.fillRect(0,0,1024,768);
-        backbufferGraphics.drawImage(background, 0, 0, null);
-        backbufferGraphics.drawImage(player, 100, 100, null);
+        backbufferGraphics.drawImage(background, 0, backgroundY-3109+768, null);
+        backgroundY +=1;
+        backbufferGraphics.drawImage(player, playerX, playerY, null);
 
         windowGraphics.drawImage(backbufferImage, 0, 0, null);
     }
