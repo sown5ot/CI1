@@ -23,6 +23,7 @@ public class GameWindow extends Frame {
 
     private void setupWindow() {
         this.setSize(1024, 768);
+        this.setTitle("Tohou - Remade by Sown5ot");
         this.setVisible(true);
         this.addWindowListener(new WindowAdapter() {
             @Override
