@@ -1,4 +1,6 @@
 import touhou.GameWindow;
+import static java.awt.event.KeyEvent.*;
+
 
 /**
  * Created by huynq on 7/4/17.
