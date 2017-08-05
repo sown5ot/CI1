@@ -35,9 +35,10 @@ public class GameWindow extends Frame {
     InputManager inputManager = new InputManager();
 
     public GameWindow() {
+        pack(); //ép vào inset (phần người dùng nhìn được)
         background = SpriteUtils.loadImage("assets/images/background/0.png");
-        player.inputManager = this.inputManager;
-        player.constraints = new Constraints(0, 768, 0, 384);
+        player.setInputManager(inputManager);
+        player.setConstraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
         player.playerSpells = this.playerSpells;
         setupGameLoop();
         setupWindow();
@@ -65,9 +66,7 @@ public class GameWindow extends Frame {
         });
         this.addKeyListener(new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {
-
-            }
+            public void keyTyped(KeyEvent e) {            }
 
             @Override
             public void keyPressed(KeyEvent e) {

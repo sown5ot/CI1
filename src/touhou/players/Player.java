@@ -2,7 +2,9 @@ package touhou.players;
 
 import tklibs.SpriteUtils;
 import touhou.bases.Constraints;
+import touhou.bases.FrameCounter;
 import touhou.bases.Vector2D;
+import touhou.bases.renderers.ImageRenderer;
 import touhou.inputs.InputManager;
 
 import java.awt.*;
@@ -14,17 +16,21 @@ import java.util.ArrayList;
  * Created by Son Hoang on 8/2/2017.
  */
 public class Player {
-    public Vector2D position;
-    public BufferedImage image;
-    public final int SPEED = 5;
-    public InputManager inputManager;
-    public Constraints constraints;
+    private Vector2D position;
+    private ImageRenderer renderer;
+    private InputManager inputManager;
+    private Constraints constraints;
+    private FrameCounter frameCounter;
     public ArrayList<PlayerSpell> playerSpells;
+
+    private final int SPEED = 5;
 
     //constructor
     public Player(){
         position = new Vector2D(384/2, 600);
-        image = SpriteUtils.loadImage("assets/images/players/straight/0.png");
+        BufferedImage image = SpriteUtils.loadImage("assets/images/players/straight/0.png");
+        renderer = new ImageRenderer(image);
+        frameCounter = new FrameCounter(3);
     }
 
     public void run(){
@@ -35,17 +41,35 @@ public class Player {
 
         if (constraints != null)constraints.make(position);
 
-        castSpell();
+        if (frameCounter.run()) {
+            frameCounter.reset();
+            castSpell();
+        }
     }
 
     private void castSpell() {
         if (inputManager.xPressed) {
-            PlayerSpell newSpell = new PlayerSpell(position.add(0,10));
+            PlayerSpell newSpell = new PlayerSpell();
+            newSpell.position.set(this.position);
             playerSpells.add(newSpell);
         }
     }
 
-    public void render(Graphics2D g2d){
-        g2d.drawImage(image, (int) position.x, (int) position.y, null);
+    public void render(Graphics2D g2d){ renderer.render(g2d, position); }
+
+    public void setInputManager(InputManager inputManager) {
+        if (inputManager == null){
+            throw new IllegalArgumentException();
+        } else {
+            this.inputManager = inputManager;
+        }
+    }
+
+    public void setConstraints(Constraints constraints) {
+        if (constraints == null){
+            throw new IllegalArgumentException();
+        } else {
+            this.constraints = constraints;
+        }
     }
 }

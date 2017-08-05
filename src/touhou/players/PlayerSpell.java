@@ -2,6 +2,7 @@ package touhou.players;
 
 import tklibs.SpriteUtils;
 import touhou.bases.Vector2D;
+import touhou.bases.renderers.ImageRenderer;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,28 +12,20 @@ import java.awt.image.BufferedImage;
  */
 public class PlayerSpell {
     public Vector2D position;
-    public BufferedImage image;
-    public Player player;
-    public final int SPEED = 5;
+    public ImageRenderer renderer;
+    public final int SPEED = 20;
 
     public PlayerSpell() {
         position = new Vector2D();
-        image = SpriteUtils.loadImage("assets/images/player-spells/a/0.png");
+        BufferedImage image = SpriteUtils.loadImage("assets/images/player-spells/a/0.png");
+        renderer = new ImageRenderer(image);
     }
 
-    public PlayerSpell(Vector2D position) {
-        this.position = position;
-        image = SpriteUtils.loadImage("assets/images/player-spells/a/0.png");
-    }
 
-    //run()
     public void run(){
         position.addUp(0, -SPEED);
     }
 
-    //render
-    public void render(Graphics2D g2d){
-        g2d.drawImage(image, (int) (position.x + 5), (int) (position.y + 5), null);
-    }
+    public void render(Graphics2D g2d){renderer.render(g2d, position); }
 
 }
