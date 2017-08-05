@@ -97,9 +97,7 @@ public class GameWindow extends Frame {
 
     private void run() {
         player.run();
-        for (PlayerSpell playerSpell : playerSpells) { //foreach
-            playerSpell.run();
-        }
+        for (PlayerSpell playerSpell : playerSpells) { playerSpell.run(); } /*foreach*/
     }
 
     private void render() {
@@ -108,9 +106,8 @@ public class GameWindow extends Frame {
         backbufferGraphics.drawImage(background, 0, 0, null);
         player.render(backbufferGraphics);
 
-        for (PlayerSpell playerSpell: playerSpells) {
-            playerSpell.render(backbufferGraphics);
-        }
+        for (PlayerSpell playerSpell: playerSpells) playerSpell.render(backbufferGraphics);
+
 
         windowGraphics.drawImage(backbufferImage, 0, 0, null);
     }
