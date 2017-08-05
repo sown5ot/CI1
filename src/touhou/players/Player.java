@@ -21,6 +21,7 @@ public class Player {
     private InputManager inputManager;
     private Constraints constraints;
     private FrameCounter frameCounter;
+    private boolean lockSpell;
     public ArrayList<PlayerSpell> playerSpells;
 
     private final int SPEED = 5;
@@ -41,17 +42,26 @@ public class Player {
 
         if (constraints != null)constraints.make(position);
 
-        if (frameCounter.run()) {
-            frameCounter.reset();
             castSpell();
-        }
     }
 
     private void castSpell() {
-        if (inputManager.xPressed) {
+        if (inputManager.xPressed && !lockSpell) {
             PlayerSpell newSpell = new PlayerSpell();
             newSpell.position.set(this.position);
             playerSpells.add(newSpell);
+            lockSpell = true;
+            frameCounter.reset();
+        }
+
+        unlockSpell();
+    }
+
+    private void unlockSpell() {
+        if (lockSpell){
+            if (frameCounter.run()){
+                lockSpell = false;
+            }
         }
     }
 
