@@ -9,18 +9,20 @@ import touhou.bases.renderers.ImageRenderer;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Enemy {
-    private Vector2D position;
+    public Vector2D position;
     private Constraints constraints;
     private FrameCounter frameCounter;
     private ImageRenderer renderer;
     public ArrayList<EnemySpell> enemySpells;
+    public ArrayList<Enemy> enemies;
 
-    private final int SPEED = 5;
+    private final int SPEED = 1;
 
     public Enemy() {
-        position = new Vector2D(384/2, 0);
+        position = new Vector2D();
         BufferedImage image = SpriteUtils.loadImage("assets/images/enemies/level0/black/0.png");
         renderer = new ImageRenderer(image);
         frameCounter = new FrameCounter(10);
@@ -31,9 +33,8 @@ public class Enemy {
             constraints.make(position);
         }
 
-        position.addUp(0, SPEED);
+        position.addUp(SPEED, SPEED);
         castSpell();
-
     }
 
     private void castSpell() {

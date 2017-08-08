@@ -4,6 +4,7 @@ import tklibs.SpriteUtils;
 import touhou.Enemies.Enemy;
 import touhou.Enemies.EnemySpell;
 import touhou.bases.Constraints;
+import touhou.bases.FrameCounter;
 import touhou.inputs.InputManager;
 import touhou.players.Player;
 import touhou.players.PlayerSpell;
@@ -15,6 +16,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static java.awt.event.KeyEvent.*;
 
@@ -25,12 +27,13 @@ public class GameWindow extends Frame {
 
     private long lastTimeUpdate;
     private long currentTime;
-    private Graphics2D windowGraphics;
 
+    private Graphics2D windowGraphics;
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
-
     private BufferedImage background;
+    private int backgroundY = 2400;
+    private FrameCounter addEnemy;
 
     Player player = new Player();
     ArrayList<PlayerSpell> playerSpells = new ArrayList<>();
@@ -42,11 +45,13 @@ public class GameWindow extends Frame {
     public GameWindow() {
         pack(); //ép vào inset (phần người dùng nhìn được)
         background = SpriteUtils.loadImage("assets/images/background/0.png");
+        //backgroundY = background.getHeight() / 2;
         player.setInputManager(inputManager);
         player.setConstraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
         player.playerSpells = this.playerSpells;
-        enemy.setConstraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
+        enemy.setConstraints(new Constraints(getInsets().top, 768 / 2, getInsets().left, 384));
         enemy.enemySpells = this.enemySpells;
+
         setupGameLoop();
         setupWindow();
     }
@@ -102,17 +107,23 @@ public class GameWindow extends Frame {
     }
 
     private void run() {
+        player.run();
+        for (PlayerSpell playerSpell : playerSpells) { playerSpell.run(); } /*foreach*/
+
         enemy.run();
         for (EnemySpell enemySpell : enemySpells){ enemySpell.run(); }
 
-        player.run();
-        for (PlayerSpell playerSpell : playerSpells) { playerSpell.run(); } /*foreach*/
     }
 
     private void render() {
         backbufferGraphics.setColor(Color.black);
         backbufferGraphics.fillRect(0, 0, 1024, 768);
-        backbufferGraphics.drawImage(background, 0, 0, null);
+//        if (backgroundY >= 0){
+//            backgroundY = background.getHeight() / 2;
+//            backbufferGraphics.drawImage(background, 0, -backgroundY, null);
+//        }
+        backbufferGraphics.drawImage(background, 0, -backgroundY, null);
+        backgroundY -= 3;
 
         player.render(backbufferGraphics);
         for (PlayerSpell playerSpell: playerSpells) playerSpell.render(backbufferGraphics);
