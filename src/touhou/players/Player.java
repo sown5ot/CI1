@@ -1,10 +1,11 @@
 package touhou.players;
 
+import bases.Constraints;
+import bases.FrameCounter;
+import bases.GameObject;
+import bases.Vector2D;
+import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
-import touhou.bases.Constraints;
-import touhou.bases.FrameCounter;
-import touhou.bases.Vector2D;
-import touhou.bases.renderers.ImageRenderer;
 import touhou.inputs.InputManager;
 
 import java.awt.*;
@@ -15,23 +16,19 @@ import java.util.ArrayList;
 /**
  * Created by Son Hoang on 8/2/2017.
  */
-public class Player {
-    private Vector2D position;
-    private ImageRenderer renderer;
+public class Player extends GameObject{
     private InputManager inputManager;
     private Constraints constraints;
     private FrameCounter frameCounter;
     private boolean lockSpell;
-    public ArrayList<PlayerSpell> playerSpells;
-
     private final int SPEED = 5;
 
     //constructor
     public Player(){
-        position = new Vector2D(384/2, 600);
-        BufferedImage image = SpriteUtils.loadImage("assets/images/players/straight/0.png");
-        renderer = new ImageRenderer(image);
-        frameCounter = new FrameCounter(3);
+        super();
+        renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/players/straight/0.png"));
+        frameCounter = new FrameCounter(5);
+        lockSpell = false;
     }
 
     public void run(){
@@ -48,10 +45,9 @@ public class Player {
     private void castSpell() {
         if (inputManager.xPressed && !lockSpell) {
             PlayerSpell newSpell = new PlayerSpell();
-            newSpell.position.set(this.position);
-            playerSpells.add(newSpell);
+            newSpell.getPosition().set(this.position);
+            GameObject.add(newSpell);
             lockSpell = true;
-            frameCounter.reset();
         }
 
         unlockSpell();
@@ -60,12 +56,11 @@ public class Player {
     private void unlockSpell() {
         if (lockSpell){
             if (frameCounter.run()){
+                frameCounter.reset();
                 lockSpell = false;
             }
         }
     }
-
-    public void render(Graphics2D g2d){ renderer.render(g2d, position); }
 
     public void setInputManager(InputManager inputManager) {
         if (inputManager == null){

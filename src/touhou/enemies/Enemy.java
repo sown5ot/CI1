@@ -1,39 +1,35 @@
 package touhou.enemies;
 
+import bases.GameObject;
 import tklibs.SpriteUtils;
-import touhou.bases.Constraints;
-import touhou.bases.FrameCounter;
-import touhou.bases.Vector2D;
-import touhou.bases.renderers.ImageRenderer;
+import bases.Constraints;
+import bases.FrameCounter;
+import bases.Vector2D;
+import bases.renderers.ImageRenderer;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class Enemy {
-    public Vector2D position;
+public class Enemy extends GameObject{
     private Constraints constraints;
     private FrameCounter frameCounter;
-    private ImageRenderer renderer;
-    public ArrayList<EnemySpell> enemySpells;
-    public ArrayList<Enemy> enemies;
-
     private final int SPEED = 1;
 
     public Enemy() {
-        position = new Vector2D();
-        BufferedImage image = SpriteUtils.loadImage("assets/images/enemies/level0/black/0.png");
-        renderer = new ImageRenderer(image);
-        frameCounter = new FrameCounter(10);
+        super();
+        renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/enemies/level0/black/0.png"));
+        frameCounter = new FrameCounter(70);
     }
 
     public void run(){
-        if (constraints != null) {
-            constraints.make(position);
-        }
+        super.run();
+//        if (constraints != null) {
+//            constraints.make(position);
+//        }
 
         fly();
-//        castSpell();
+        castSpell();
     }
 
     public void fly(){
@@ -43,26 +39,9 @@ public class Enemy {
     private void castSpell() {
         if (frameCounter.run()) {
             EnemySpell enemySpell = new EnemySpell();
-            enemySpell.position.set(this.position);
-            enemySpells.add(enemySpell);
+            enemySpell.getPosition().set(this.position);
+            GameObject.add(enemySpell);
             frameCounter.reset();
         }
-
-    }
-
-    public void render(Graphics2D g2d){
-        renderer.render(g2d, position);
-    }
-
-    public void setConstraints(Constraints constraints){
-        if (constraints == null){
-            throw new IllegalArgumentException();
-        } else {
-            this.constraints = constraints;
-        }
-    }
-
-    public Vector2D getPosition() {
-        return position;
     }
 }

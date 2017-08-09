@@ -1,28 +1,23 @@
 package touhou.enemies;
 
+import bases.GameObject;
 import tklibs.SpriteUtils;
-import touhou.bases.Vector2D;
-import touhou.bases.renderers.ImageRenderer;
+import bases.Vector2D;
+import bases.renderers.ImageRenderer;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class EnemySpell {
-    public Vector2D position;
-    private ImageRenderer renderer;
+public class EnemySpell extends GameObject{
     private final int SPEED = 10;
 
     public EnemySpell() {
-        position = new Vector2D();
-        BufferedImage image = SpriteUtils.loadImage("assets/images/enemies/bullets/blue.png");
-        renderer = new ImageRenderer(image);
+        super();
+        renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/enemies/bullets/blue.png"));
     }
 
     public void run(){
+        super.run();
         position.addUp(0, SPEED);
-    }
-
-    public void render(Graphics2D g2d){
-        renderer.render(g2d, position);
     }
 }

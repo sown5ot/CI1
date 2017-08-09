@@ -1,11 +1,13 @@
 package touhou;
 
+import bases.GameObject;
 import tklibs.SpriteUtils;
 import touhou.enemies.Enemy;
 import touhou.enemies.EnemySpawner;
 import touhou.enemies.EnemySpell;
-import touhou.bases.Constraints;
-import touhou.bases.FrameCounter;
+import bases.Constraints;
+import bases.FrameCounter;
+import touhou.images.Background;
 import touhou.inputs.InputManager;
 import touhou.players.Player;
 import touhou.players.PlayerSpell;
@@ -31,26 +33,27 @@ public class GameWindow extends Frame {
     private Graphics2D backbufferGraphics;
     private BufferedImage background;
     private int backgroundY = 2400;
-    private FrameCounter enemySpawnCounter;
 
     Player player = new Player();
-    ArrayList<PlayerSpell> playerSpells = new ArrayList<>();
     InputManager inputManager = new InputManager();
-
-    EnemySpawner enemySpawner = new EnemySpawner();
-    ArrayList<Enemy> enemies = new ArrayList<>();
-    ArrayList<EnemySpell> enemySpells = new ArrayList<>();
+    private EnemySpawner enemySpawner = new EnemySpawner();
+//    Background background = new Background();
 
     public GameWindow() {
         pack(); //ép vào inset (phần người dùng nhìn được)
         background = SpriteUtils.loadImage("assets/images/background/0.png");
-        //backgroundY = background.getHeight() / 2;
-        player.setInputManager(inputManager);
-        player.setConstraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
-        player.playerSpells = this.playerSpells;
-
+//        backgroundY = background.getHeight() / 2;
+        addPlayer();
         setupGameLoop();
         setupWindow();
+    }
+
+    private void addPlayer() {
+        player.getPosition().set(384 / 2, 600);
+        player.setInputManager(inputManager);
+        player.setConstraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
+
+        GameObject.add(player);
     }
 
     private void setupGameLoop() {
@@ -104,16 +107,8 @@ public class GameWindow extends Frame {
     }
 
     private void run() {
-        player.run();
-        for (PlayerSpell playerSpell : playerSpells) { playerSpell.run(); } /*foreach*/
-
-        for (Enemy enemy: enemies) {
-            enemy.run();
-        }
-
-        enemySpawner.spawn(enemies);
-        //for (EnemySpell enemySpell : enemySpells){ enemySpell.run(); }
-
+        GameObject.runAll();
+        enemySpawner.spawn();
     }
 
     private void render() {
@@ -125,14 +120,7 @@ public class GameWindow extends Frame {
 //        }
         backbufferGraphics.drawImage(background, 0, -backgroundY, null);
         backgroundY -= 3;
-
-        player.render(backbufferGraphics);
-        for (PlayerSpell playerSpell: playerSpells) playerSpell.render(backbufferGraphics);
-
-        for (Enemy enemy: enemies) {
-            enemy.render(backbufferGraphics);
-        }
-        for (EnemySpell enemySpell : enemySpells) enemySpell.render(backbufferGraphics);
+        GameObject.renderAll(backbufferGraphics);
 
 
         windowGraphics.drawImage(backbufferImage, 0, 0, null);

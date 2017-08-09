@@ -1,25 +1,28 @@
 package touhou.enemies;
 
-import touhou.bases.FrameCounter;
+import bases.FrameCounter;
+import bases.GameObject;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Vector;
 
-public class EnemySpawner {
+public class EnemySpawner extends GameObject{
     private FrameCounter frameCounter;
     private Random random;
 
     public EnemySpawner() {
-        frameCounter = new FrameCounter(70);
+        super();
+        frameCounter = new FrameCounter(140);
         random = new Random();
     }
 
-    public void spawn(ArrayList<Enemy> enemies){
+    public void spawn(){
         if (frameCounter.run()){
             frameCounter.reset();
             Enemy enemy = new Enemy();
             enemy.getPosition().set(random.nextInt(384), 40);
-            enemies.add(enemy);
+            GameObject.add(enemy);
         }
     }
 }
