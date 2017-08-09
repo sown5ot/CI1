@@ -1,4 +1,4 @@
-package touhou.Enemies;
+package touhou.enemies;
 
 import tklibs.SpriteUtils;
 import touhou.bases.Vector2D;

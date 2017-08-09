@@ -1,8 +1,9 @@
 package touhou;
 
 import tklibs.SpriteUtils;
-import touhou.Enemies.Enemy;
-import touhou.Enemies.EnemySpell;
+import touhou.enemies.Enemy;
+import touhou.enemies.EnemySpawner;
+import touhou.enemies.EnemySpell;
 import touhou.bases.Constraints;
 import touhou.bases.FrameCounter;
 import touhou.inputs.InputManager;
@@ -16,9 +17,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Random;
-
-import static java.awt.event.KeyEvent.*;
 
 /**
  * Created by huynq on 7/29/17.
@@ -33,13 +31,14 @@ public class GameWindow extends Frame {
     private Graphics2D backbufferGraphics;
     private BufferedImage background;
     private int backgroundY = 2400;
-    private FrameCounter addEnemy;
+    private FrameCounter enemySpawnCounter;
 
     Player player = new Player();
     ArrayList<PlayerSpell> playerSpells = new ArrayList<>();
     InputManager inputManager = new InputManager();
 
-    Enemy enemy = new Enemy();
+    EnemySpawner enemySpawner = new EnemySpawner();
+    ArrayList<Enemy> enemies = new ArrayList<>();
     ArrayList<EnemySpell> enemySpells = new ArrayList<>();
 
     public GameWindow() {
@@ -49,8 +48,6 @@ public class GameWindow extends Frame {
         player.setInputManager(inputManager);
         player.setConstraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
         player.playerSpells = this.playerSpells;
-        enemy.setConstraints(new Constraints(getInsets().top, 768 / 2, getInsets().left, 384));
-        enemy.enemySpells = this.enemySpells;
 
         setupGameLoop();
         setupWindow();
@@ -110,8 +107,12 @@ public class GameWindow extends Frame {
         player.run();
         for (PlayerSpell playerSpell : playerSpells) { playerSpell.run(); } /*foreach*/
 
-        enemy.run();
-        for (EnemySpell enemySpell : enemySpells){ enemySpell.run(); }
+        for (Enemy enemy: enemies) {
+            enemy.run();
+        }
+
+        enemySpawner.spawn(enemies);
+        //for (EnemySpell enemySpell : enemySpells){ enemySpell.run(); }
 
     }
 
@@ -128,7 +129,9 @@ public class GameWindow extends Frame {
         player.render(backbufferGraphics);
         for (PlayerSpell playerSpell: playerSpells) playerSpell.render(backbufferGraphics);
 
-        enemy.render(backbufferGraphics);
+        for (Enemy enemy: enemies) {
+            enemy.render(backbufferGraphics);
+        }
         for (EnemySpell enemySpell : enemySpells) enemySpell.render(backbufferGraphics);
 
 

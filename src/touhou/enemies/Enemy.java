@@ -1,4 +1,4 @@
-package touhou.Enemies;
+package touhou.enemies;
 
 import tklibs.SpriteUtils;
 import touhou.bases.Constraints;
@@ -9,7 +9,6 @@ import touhou.bases.renderers.ImageRenderer;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Enemy {
     public Vector2D position;
@@ -33,8 +32,12 @@ public class Enemy {
             constraints.make(position);
         }
 
-        position.addUp(SPEED, SPEED);
-        castSpell();
+        fly();
+//        castSpell();
+    }
+
+    public void fly(){
+        position.addUp(0, SPEED);
     }
 
     private void castSpell() {
@@ -57,5 +60,9 @@ public class Enemy {
         } else {
             this.constraints = constraints;
         }
+    }
+
+    public Vector2D getPosition() {
+        return position;
     }
 }
