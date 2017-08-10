@@ -42,9 +42,15 @@ public class GameWindow extends Frame {
         pack(); //ép vào inset (phần người dùng nhìn được)
         addBackground();
         addPlayer();
+//        enemySpawn();
         setupGameLoop();
         setupWindow();
     }
+
+//    private void enemySpawn() {
+//        enemySpawner.getPosition().set(0, 0);
+//        GameObject.add(enemySpawner);
+//    }
 
     private void addBackground() {
         background.getPosition().set(384 / 2, -1200);
@@ -111,7 +117,7 @@ public class GameWindow extends Frame {
 
     private void run() {
         GameObject.runAll();
-        enemySpawner.spawn();
+//        enemySpawner.spawn();
     }
 
     private void render() {

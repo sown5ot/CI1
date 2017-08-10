@@ -4,22 +4,19 @@ import bases.GameObject;
 import tklibs.SpriteUtils;
 import bases.Constraints;
 import bases.FrameCounter;
-import bases.Vector2D;
 import bases.renderers.ImageRenderer;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 public class Enemy extends GameObject{
     private Constraints constraints;
     private FrameCounter frameCounter;
     private final int SPEED = 1;
+    private EnemySpawner enemySpawner;
 
     public Enemy() {
         super();
         renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/enemies/level0/black/0.png"));
         frameCounter = new FrameCounter(70);
+        enemySpawner = new EnemySpawner();
     }
 
     public void run(){
