@@ -31,8 +31,9 @@ public class GameWindow extends Frame {
     private Graphics2D windowGraphics;
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
-    private BufferedImage background;
-    private int backgroundY = 2400;
+//    private BufferedImage background;
+//    private int backgroundY = 2400;
+    private Background background = new Background();
 
     Player player = new Player();
     InputManager inputManager = new InputManager();
@@ -41,7 +42,6 @@ public class GameWindow extends Frame {
 
     public GameWindow() {
         pack(); //ép vào inset (phần người dùng nhìn được)
-        background = SpriteUtils.loadImage("assets/images/background/0.png");
 //        backgroundY = background.getHeight() / 2;
         addPlayer();
         setupGameLoop();
@@ -114,12 +114,7 @@ public class GameWindow extends Frame {
     private void render() {
         backbufferGraphics.setColor(Color.black);
         backbufferGraphics.fillRect(0, 0, 1024, 768);
-//        if (backgroundY >= 0){
-//            backgroundY = background.getHeight() / 2;
-//            backbufferGraphics.drawImage(background, 0, -backgroundY, null);
-//        }
-        backbufferGraphics.drawImage(background, 0, -backgroundY, null);
-        backgroundY -= 3;
+        background.paint(backbufferGraphics);
         GameObject.renderAll(backbufferGraphics);
 
 

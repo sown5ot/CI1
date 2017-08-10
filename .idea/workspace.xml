@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9238b767-79db-4c42-87ed-35154cd9c171" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/touhou/bases/Constraints.java" afterPath="$PROJECT_DIR$/src/bases/Constraints.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/touhou/bases/FrameCounter.java" afterPath="$PROJECT_DIR$/src/bases/FrameCounter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/touhou/bases/Vector2D.java" afterPath="$PROJECT_DIR$/src/bases/Vector2D.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/touhou/bases/renderers/ImageRenderer.java" afterPath="$PROJECT_DIR$/src/bases/renderers/ImageRenderer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/GameWindow.java" afterPath="$PROJECT_DIR$/src/touhou/GameWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/EnemySpell.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/EnemySpell.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/players/Player.java" afterPath="$PROJECT_DIR$/src/touhou/players/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/players/PlayerSpell.java" afterPath="$PROJECT_DIR$/src/touhou/players/PlayerSpell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/images/Background.java" afterPath="$PROJECT_DIR$/src/touhou/images/Background.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,23 +16,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameWindow.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/touhou/GameWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-732">
-              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="616">
+              <caret line="116" column="45" lean-forward="false" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Background.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Background.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/touhou/images/Background.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+            <state relative-caret-position="255">
+              <caret line="15" column="72" lean-forward="false" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#452#453#0" expanded="true" />
+                <element signature="e#510#511#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,8 +157,8 @@
         <option value="$PROJECT_DIR$/src/touhou/players/Player.java" />
         <option value="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
         <option value="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" />
-        <option value="$PROJECT_DIR$/src/touhou/GameWindow.java" />
         <option value="$PROJECT_DIR$/src/touhou/images/Background.java" />
+        <option value="$PROJECT_DIR$/src/touhou/GameWindow.java" />
       </list>
     </option>
   </component>
@@ -208,6 +202,24 @@
             <path>
               <item name="ci1-sonhoang" type="b2602c69:ProjectViewProjectNode" />
               <item name="ci1-sonhoang" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ci1-sonhoang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ci1-sonhoang" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ci1-sonhoang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ci1-sonhoang" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ci1-sonhoang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ci1-sonhoang" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="background" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ci1-sonhoang" type="b2602c69:ProjectViewProjectNode" />
@@ -392,7 +404,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17853108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17853108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17062147" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -812,21 +824,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/GameWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/touhou/images/Background.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-732">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="255">
+          <caret line="15" column="72" lean-forward="false" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
+            <element signature="e#510#511#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/images/Background.java">
+    <entry file="file://$PROJECT_DIR$/src/touhou/GameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="616">
+          <caret line="116" column="45" lean-forward="false" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
