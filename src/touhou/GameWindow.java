@@ -31,21 +31,24 @@ public class GameWindow extends Frame {
     private Graphics2D windowGraphics;
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
-//    private BufferedImage background;
-//    private int backgroundY = 2400;
     private Background background = new Background();
 
     Player player = new Player();
     InputManager inputManager = new InputManager();
     private EnemySpawner enemySpawner = new EnemySpawner();
-//    Background background = new Background();
+
 
     public GameWindow() {
         pack(); //ép vào inset (phần người dùng nhìn được)
-//        backgroundY = background.getHeight() / 2;
+        addBackground();
         addPlayer();
         setupGameLoop();
         setupWindow();
+    }
+
+    private void addBackground() {
+        background.getPosition().set(384 / 2, -1200);
+        GameObject.add(background);
     }
 
     private void addPlayer() {
@@ -114,7 +117,7 @@ public class GameWindow extends Frame {
     private void render() {
         backbufferGraphics.setColor(Color.black);
         backbufferGraphics.fillRect(0, 0, 1024, 768);
-        background.paint(backbufferGraphics);
+//        background.paint(backbufferGraphics);
         GameObject.renderAll(backbufferGraphics);
 
 
