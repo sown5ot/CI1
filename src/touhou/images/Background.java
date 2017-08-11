@@ -14,11 +14,6 @@ public class Background extends GameObject {
         renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/background/0.png"));
     }
 
-//    public void paint(Graphics2D g2d){
-//        g2d.drawImage(image, 0, (int) position.y, null);
-//        position.y += 3;
-//    }
-
     public void run(){
         super.run();
         position.y += 3;

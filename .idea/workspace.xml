@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9238b767-79db-4c42-87ed-35154cd9c171" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci1-sonhoang/touhou/Enemies/Enemy.class" afterPath="$PROJECT_DIR$/out/production/ci1-sonhoang/touhou/Enemies/Enemy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci1-sonhoang/touhou/GameWindow.class" afterPath="$PROJECT_DIR$/out/production/ci1-sonhoang/touhou/GameWindow.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci1-sonhoang/touhou/enemies/EnemySpawner.class" afterPath="$PROJECT_DIR$/out/production/ci1-sonhoang/touhou/enemies/EnemySpawner.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci1-sonhoang/touhou/images/Background.class" afterPath="$PROJECT_DIR$/out/production/ci1-sonhoang/touhou/images/Background.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/renderers/ImageRenderer.java" afterPath="$PROJECT_DIR$/src/bases/renderers/ImageRenderer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/GameWindow.java" afterPath="$PROJECT_DIR$/src/touhou/GameWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/images/Background.java" afterPath="$PROJECT_DIR$/src/touhou/images/Background.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,9 +26,13 @@
       <file leaf-file-name="GameWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/touhou/GameWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1308">
-              <caret line="122" column="10" lean-forward="true" selection-start-line="122" selection-start-column="10" selection-end-line="122" selection-end-column="10" />
-              <folding />
+            <state relative-caret-position="509">
+              <caret line="125" column="8" lean-forward="false" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="8" />
+              <folding>
+                <element signature="method#loop#0;class#GameWindow#0" expanded="false" />
+                <element signature="e#3264#3265#0" expanded="true" />
+                <element signature="e#3299#3300#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -29,11 +40,21 @@
       <file leaf-file-name="EnemySpawner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+            <state relative-caret-position="135">
+              <caret line="19" column="75" lean-forward="false" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BufferedImage.java" pinned="false" current-in-tab="false">
+        <entry file="jar://E:/JAVA/src.zip!/java/awt/image/BufferedImage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="1014" column="29" lean-forward="false" selection-start-line="1014" selection-start-column="29" selection-end-line="1014" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -41,8 +62,8 @@
       <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/touhou/enemies/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+            <state relative-caret-position="340">
+              <caret line="23" column="36" lean-forward="true" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,21 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bases/renderers/ImageRenderer.java">
+      <file leaf-file-name="Background.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/touhou/images/Background.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/touhou/players/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="719">
-              <caret line="58" column="37" lean-forward="false" selection-start-line="58" selection-start-column="37" selection-end-line="58" selection-end-column="37" />
+            <state relative-caret-position="306">
+              <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,7 +86,7 @@
       <file leaf-file-name="GameObject.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bases/GameObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
+            <state relative-caret-position="611">
               <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -93,6 +104,16 @@
                 <element signature="e#1267#1268#0" expanded="true" />
                 <element signature="e#1307#1308#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageRenderer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bases/renderers/ImageRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -129,9 +150,10 @@
         <option value="$PROJECT_DIR$/src/touhou/players/PlayerSpell.java" />
         <option value="$PROJECT_DIR$/src/touhou/players/Player.java" />
         <option value="$PROJECT_DIR$/src/touhou/images/Background.java" />
+        <option value="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
+        <option value="$PROJECT_DIR$/src/bases/renderers/ImageRenderer.java" />
         <option value="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" />
         <option value="$PROJECT_DIR$/src/touhou/GameWindow.java" />
-        <option value="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
       </list>
     </option>
   </component>
@@ -206,6 +228,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="touhou" type="462c0819:PsiDirectoryNode" />
               <item name="enemies" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ci1-sonhoang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ci1-sonhoang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="touhou" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ci1-sonhoang" type="b2602c69:ProjectViewProjectNode" />
@@ -398,7 +427,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1207">
           <caret line="131" column="34" lean-forward="false" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
-          <folding />
+          <folding>
+            <element signature="method#loop#0;class#GameWindow#0" expanded="false" />
+            <element signature="e#3264#3265#0" expanded="true" />
+            <element signature="e#3299#3300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -434,7 +467,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="51" column="92" lean-forward="false" selection-start-line="51" selection-start-column="92" selection-end-line="51" selection-end-column="92" />
-          <folding />
+          <folding>
+            <element signature="method#loop#0;class#GameWindow#0" expanded="false" />
+            <element signature="e#3264#3265#0" expanded="true" />
+            <element signature="e#3299#3300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -494,8 +531,8 @@
           <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#796#797#0" expanded="true" />
+            <element signature="e#836#837#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -504,7 +541,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#loop#0;class#GameWindow#0" expanded="false" />
+            <element signature="e#3264#3265#0" expanded="true" />
+            <element signature="e#3299#3300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -564,7 +605,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1309">
           <caret line="111" column="24" lean-forward="false" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="method#loop#0;class#GameWindow#0" expanded="false" />
+            <element signature="e#3264#3265#0" expanded="true" />
+            <element signature="e#3299#3300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -598,7 +643,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#loop#0;class#GameWindow#0" expanded="false" />
+            <element signature="e#3264#3265#0" expanded="true" />
+            <element signature="e#3299#3300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -624,7 +673,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#loop#0;class#GameWindow#0" expanded="false" />
+            <element signature="e#3264#3265#0" expanded="true" />
+            <element signature="e#3299#3300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -720,16 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/images/Background.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="44" lean-forward="false" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/touhou/players/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="719">
@@ -742,7 +785,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bases/GameObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
+        <state relative-caret-position="611">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -763,28 +806,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bases/renderers/ImageRenderer.java">
+    <entry file="file://$PROJECT_DIR$/src/touhou/images/Background.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/Enemy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        <state relative-caret-position="306">
+          <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="jar://E:/JAVA/src.zip!/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tklibs/SpriteUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="36" lean-forward="true" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bases/renderers/ImageRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/JAVA/src.zip!/java/awt/image/BufferedImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="1014" column="29" lean-forward="false" selection-start-line="1014" selection-start-column="29" selection-end-line="1014" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+        <state relative-caret-position="135">
+          <caret line="19" column="75" lean-forward="false" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -793,9 +870,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/touhou/GameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1308">
-          <caret line="122" column="10" lean-forward="true" selection-start-line="122" selection-start-column="10" selection-end-line="122" selection-end-column="10" />
-          <folding />
+        <state relative-caret-position="509">
+          <caret line="125" column="8" lean-forward="false" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="8" />
+          <folding>
+            <element signature="method#loop#0;class#GameWindow#0" expanded="false" />
+            <element signature="e#3264#3265#0" expanded="true" />
+            <element signature="e#3299#3300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -29,7 +29,7 @@ public class Enemy extends GameObject{
         castSpell();
     }
 
-    public void fly(){
+    private void fly(){
         position.addUp(0, SPEED);
     }
 

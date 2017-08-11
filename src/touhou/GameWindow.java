@@ -42,15 +42,15 @@ public class GameWindow extends Frame {
         pack(); //ép vào inset (phần người dùng nhìn được)
         addBackground();
         addPlayer();
-//        enemySpawn();
+        enemySpawn();
         setupGameLoop();
         setupWindow();
     }
 
-//    private void enemySpawn() {
-//        enemySpawner.getPosition().set(0, 0);
-//        GameObject.add(enemySpawner);
-//    }
+    private void enemySpawn() {
+        enemySpawner.getPosition().set(0 ,0);
+        GameObject.add(enemySpawner);
+    }
 
     private void addBackground() {
         background.getPosition().set(384 / 2, -1200);
@@ -117,15 +117,12 @@ public class GameWindow extends Frame {
 
     private void run() {
         GameObject.runAll();
-//        enemySpawner.spawn();
     }
 
     private void render() {
         backbufferGraphics.setColor(Color.black);
         backbufferGraphics.fillRect(0, 0, 1024, 768);
-//        background.paint(backbufferGraphics);
         GameObject.renderAll(backbufferGraphics);
-
 
         windowGraphics.drawImage(backbufferImage, 0, 0, null);
     }

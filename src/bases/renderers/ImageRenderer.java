@@ -18,4 +18,6 @@ public class ImageRenderer {
                 (int)(position.y - image.getHeight() / 2),
                 null);
     }
+
+
 }
