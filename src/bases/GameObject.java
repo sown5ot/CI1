@@ -3,6 +3,7 @@ package bases;
 import bases.renderers.ImageRenderer;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 public class GameObject {
@@ -29,6 +30,17 @@ public class GameObject {
 
     public static void add(GameObject gameObject){
         newGameObjects.add(gameObject);
+    }
+
+
+    public void setTransparent(BufferedImage image){
+        int height = image.getHeight();
+        int width = image.getWidth();
+        for (int y = 0; y < height; y++){
+            for (int x = 0; x < width; x++){
+                image.setRGB(x ,y , 0);
+            }
+        }
     }
 
     public GameObject() {
@@ -58,4 +70,6 @@ public class GameObject {
     public void setRenderer(ImageRenderer renderer) {
         this.renderer = renderer;
     }
+
+
 }

@@ -37,13 +37,4 @@ public class EnemySpawner extends GameObject{
         }
     }
 
-    public void setTransparent(BufferedImage image){
-        int height = image.getHeight();
-        int width = image.getWidth();
-        for (int y = 0; y < height; y++){
-            for (int x = 0; x < width; x++){
-                image.setRGB(x ,y , 0);
-            }
-        }
-    }
 }

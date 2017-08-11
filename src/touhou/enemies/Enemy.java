@@ -10,13 +10,11 @@ public class Enemy extends GameObject{
     private Constraints constraints;
     private FrameCounter frameCounter;
     private final int SPEED = 1;
-    private EnemySpawner enemySpawner;
 
     public Enemy() {
         super();
         renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/enemies/level0/black/0.png"));
         frameCounter = new FrameCounter(70);
-        enemySpawner = new EnemySpawner();
     }
 
     public void run(){
@@ -24,7 +22,6 @@ public class Enemy extends GameObject{
 //        if (constraints != null) {
 //            constraints.make(position);
 //        }
-
         fly();
         castSpell();
     }
