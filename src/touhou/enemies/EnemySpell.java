@@ -20,4 +20,8 @@ public class EnemySpell extends GameObject{
         super.run();
         position.addUp(0, SPEED);
     }
+
+    public void shoot(){
+
+    }
 }

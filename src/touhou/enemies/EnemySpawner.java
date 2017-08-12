@@ -19,7 +19,6 @@ public class EnemySpawner extends GameObject{
         random = new Random();
         image = SpriteUtils.loadImage("assets/images/enemies/level0/black/1.png");
         renderer = new ImageRenderer(image);
-        BufferedImage image;
     }
 
     public void run(){

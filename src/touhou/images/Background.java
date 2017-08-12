@@ -9,6 +9,8 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 
 public class Background extends GameObject {
+    private final int SPEED = 1;
+
     public Background() {
         super();
         renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/background/0.png"));
@@ -16,7 +18,11 @@ public class Background extends GameObject {
 
     public void run(){
         super.run();
-        position.y += 3;
+        move();
+    }
+
+    private void move() {
+        position.addUp(0, SPEED);
     }
 
 }

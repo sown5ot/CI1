@@ -1,3 +1,4 @@
+import bases.physics.BoxCollider;
 import touhou.GameWindow;
 import static java.awt.event.KeyEvent.*;
 
@@ -9,5 +10,6 @@ public class Program {
     public static void main(String[] args) {
         GameWindow gameWindow = new GameWindow();
         gameWindow.loop();
+
     }
 }
