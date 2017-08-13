@@ -24,11 +24,9 @@ import java.util.ArrayList;
  * Created by huynq on 7/29/17.
  */
 public class GameWindow extends Frame {
-
     private long lastTimeUpdate;
     private long currentTime;
 
-    private Graphics2D windowGraphics;
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
     private Background background = new Background();
@@ -48,12 +46,11 @@ public class GameWindow extends Frame {
     }
 
     private void enemySpawn() {
-        enemySpawner.getPosition().set(0 ,0);
         GameObject.add(enemySpawner);
     }
 
     private void addBackground() {
-        background.getPosition().set(384 / 2, -1200);
+        background.getPosition().set(384 / 2, -2342 / 2);
         GameObject.add(background);
     }
 
@@ -77,7 +74,6 @@ public class GameWindow extends Frame {
 
         this.backbufferImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
         this.backbufferGraphics = (Graphics2D) this.backbufferImage.getGraphics();
-        this.windowGraphics = (Graphics2D) this.getGraphics();
 
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -104,10 +100,10 @@ public class GameWindow extends Frame {
     public void loop() {
         while(true) {
             if (lastTimeUpdate == -1) {
-                lastTimeUpdate = System.currentTimeMillis();
+                lastTimeUpdate = System.nanoTime();
             }
-            currentTime = System.currentTimeMillis();
-            if (currentTime - lastTimeUpdate > 17) {
+            currentTime = System.nanoTime();
+            if (currentTime - lastTimeUpdate > 17000000) {
                 run();
                 render();
                 lastTimeUpdate = currentTime;
@@ -119,11 +115,15 @@ public class GameWindow extends Frame {
         GameObject.runAll();
     }
 
+    public void update(Graphics g){
+        g.drawImage(backbufferImage, 0, 0, null);
+    }
+
     private void render() {
         backbufferGraphics.setColor(Color.black);
         backbufferGraphics.fillRect(0, 0, 1024, 768);
         GameObject.renderAll(backbufferGraphics);
 
-        windowGraphics.drawImage(backbufferImage, 0, 0, null);
+        repaint();
     }
 }

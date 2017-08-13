@@ -4,6 +4,8 @@ import bases.Constraints;
 import bases.FrameCounter;
 import bases.GameObject;
 import bases.Vector2D;
+import bases.physics.BoxCollider;
+import bases.physics.PhysicsBody;
 import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
 import touhou.inputs.InputManager;
@@ -16,12 +18,14 @@ import java.util.ArrayList;
 /**
  * Created by Son Hoang on 8/2/2017.
  */
-public class Player extends GameObject{
+public class Player extends GameObject implements PhysicsBody{
     private InputManager inputManager;
     private Constraints constraints;
     private FrameCounter frameCounter;
     private boolean lockSpell;
     private final int SPEED = 5;
+    private BoxCollider boxCollider;
+    public boolean isActive;
 
     //constructor
     public Player(){
@@ -29,9 +33,13 @@ public class Player extends GameObject{
         renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/players/straight/0.png"));
         frameCounter = new FrameCounter(5);
         lockSpell = false;
+        isActive = true;
+        boxCollider = new BoxCollider(20, 20);
+        this.nextGameObjects.add(boxCollider);
     }
 
-    public void run(){
+    public void run(Vector2D parentPosition){
+        super.run(parentPosition);
         if (inputManager.upPressed)position.addUp(0, -SPEED);
         if (inputManager.downPressed)position.addUp(0, SPEED);
         if (inputManager.leftPressed)position.addUp(-SPEED, 0);
@@ -76,5 +84,10 @@ public class Player extends GameObject{
         } else {
             this.constraints = constraints;
         }
+    }
+
+    @Override
+    public BoxCollider getBoxCollider() {
+        return boxCollider;
     }
 }
