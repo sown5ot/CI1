@@ -26,12 +26,13 @@ public class EnemySpell extends GameObject implements PhysicsBody{
     public void run(Vector2D parentPosition){
         super.run(parentPosition);
         position.addUp(0, SPEED);
+        hitPlayer();
     }
 
     public void hitPlayer(){
         Player hitPlayer = PhysicsPool.collideWithPlayer(boxCollider);
         if (hitPlayer != null){
-            hitPlayer.isActive = false;
+            hitPlayer.setActive(false);
             this.isActive = false;
         }
     }
