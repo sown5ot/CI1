@@ -6,8 +6,10 @@ import bases.GameObject;
 import bases.Vector2D;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
+import bases.physics.PhysicsPool;
 import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
+import touhou.enemies.Enemy;
 import touhou.inputs.InputManager;
 
 import java.awt.*;
@@ -60,6 +62,7 @@ public class Player extends GameObject implements PhysicsBody{
 
         unlockSpell();
     }
+
 
     private void unlockSpell() {
         if (lockSpell){

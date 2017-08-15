@@ -4,10 +4,12 @@ import bases.GameObject;
 import bases.Vector2D;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
+import bases.physics.PhysicsPool;
 import tklibs.SpriteUtils;
 import bases.Constraints;
 import bases.FrameCounter;
 import bases.renderers.ImageRenderer;
+import touhou.players.Player;
 
 public class Enemy extends GameObject implements PhysicsBody{
     private Constraints constraints;
@@ -30,6 +32,15 @@ public class Enemy extends GameObject implements PhysicsBody{
 //        }
         fly();
         castSpell();
+        hitPlayer();
+    }
+
+    private void hitPlayer(){
+        Player hitPlayer = PhysicsPool.collideWithPlayer(boxCollider);
+        if (hitPlayer != null){
+            hitPlayer.setActive(false);
+            this.isActive = false;
+        }
     }
 
     private void fly(){
