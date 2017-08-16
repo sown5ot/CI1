@@ -50,7 +50,7 @@ public class GameWindow extends Frame {
     }
 
     private void addBackground() {
-        background.getPosition().set(384 / 2, -2342 / 2);
+        background.getPosition().set(384 / 2, -1200 / 2);
         GameObject.add(background);
     }
 

@@ -16,7 +16,7 @@ public class EnemySpawner extends GameObject{
 
     public EnemySpawner() {
         super();
-        frameCounter = new FrameCounter(140);
+        frameCounter = new FrameCounter(100);
         random = new Random();
     }
 

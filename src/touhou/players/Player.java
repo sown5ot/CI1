@@ -28,6 +28,7 @@ public class Player extends GameObject implements PhysicsBody{
     private final int SPEED = 5;
     private BoxCollider boxCollider;
     public boolean isActive;
+    private int healthPoint;
 
     //constructor
     public Player(){
@@ -38,6 +39,7 @@ public class Player extends GameObject implements PhysicsBody{
         isActive = true;
         boxCollider = new BoxCollider(20, 20);
         this.nextGameObjects.add(boxCollider);
+        healthPoint = 15;
     }
 
     public void run(Vector2D parentPosition){
@@ -87,6 +89,15 @@ public class Player extends GameObject implements PhysicsBody{
         } else {
             this.constraints = constraints;
         }
+    }
+
+    public void getDamage(int damage){
+        healthPoint -= damage;
+//        if (healthPoint == 0) this.setActive(false);
+    }
+
+    public int getHealthPoint() {
+        return healthPoint;
     }
 
     @Override
