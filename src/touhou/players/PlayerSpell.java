@@ -33,7 +33,7 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
     }
 
     private void hitEnemy() {
-        Enemy hitEnemy = PhysicsPool.collideWithEnemy(this.boxCollider);
+        Enemy hitEnemy = PhysicsPool.collideWith(this.boxCollider, Enemy.class);
         if (hitEnemy != null){
             hitEnemy.setActive(false);
             this.isActive = false;

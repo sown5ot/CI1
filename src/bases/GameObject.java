@@ -3,6 +3,7 @@ package bases;
 import bases.physics.PhysicsBody;
 import bases.physics.PhysicsPool;
 import bases.renderers.ImageRenderer;
+import bases.renderers.Renderer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.Vector;
 
 public class GameObject {
     protected Vector2D position;
-    protected ImageRenderer renderer;
+    protected Renderer renderer;
     protected Vector2D screenPosition;
     protected ArrayList<GameObject> nextGameObjects;
     protected boolean isActive;
@@ -88,11 +89,11 @@ public class GameObject {
         this.position = position;
     }
 
-    public ImageRenderer getRenderer() {
+    public Renderer getRenderer() {
         return renderer;
     }
 
-    public void setRenderer(ImageRenderer renderer) {
+    public void setRenderer(Renderer renderer) {
         this.renderer = renderer;
     }
 

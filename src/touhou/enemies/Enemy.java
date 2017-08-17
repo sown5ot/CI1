@@ -5,6 +5,8 @@ import bases.Vector2D;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import bases.physics.PhysicsPool;
+import bases.renderers.Animation;
+import bases.renderers.Renderer;
 import tklibs.SpriteUtils;
 import bases.Constraints;
 import bases.FrameCounter;
@@ -14,12 +16,16 @@ import touhou.players.Player;
 public class Enemy extends GameObject implements PhysicsBody{
     private Constraints constraints;
     private FrameCounter frameCounter;
-    private final int SPEED = 1;
+    private final int SPEED = 2;
     private BoxCollider boxCollider;
 
     public Enemy() {
         super();
-        renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/enemies/level0/black/0.png"));
+        renderer = new Animation(7,
+                SpriteUtils.loadImage("assets/images/enemies/level0/blue/0.png"),
+                SpriteUtils.loadImage("assets/images/enemies/level0/blue/1.png"),
+                SpriteUtils.loadImage("assets/images/enemies/level0/blue/2.png"),
+                SpriteUtils.loadImage("assets/images/enemies/level0/blue/3.png"));
         frameCounter = new FrameCounter(70);
         boxCollider =  new BoxCollider(15, 30);
         this.nextGameObjects.add(boxCollider);
@@ -36,7 +42,7 @@ public class Enemy extends GameObject implements PhysicsBody{
     }
 
     private void hitPlayer(){
-        Player hitPlayer = PhysicsPool.collideWithPlayer(boxCollider);
+        Player hitPlayer = PhysicsPool.collideWith(boxCollider, Player.class);
         if (hitPlayer != null){
             hitPlayer.setActive(false);
             this.isActive = false;

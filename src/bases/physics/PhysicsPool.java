@@ -8,22 +8,11 @@ import java.util.Vector;
 public class PhysicsPool {
     private static Vector<PhysicsBody> physicsObjects = new Vector<>();
 
-    public static Enemy collideWithEnemy(BoxCollider otherBox){
+    public static <T extends PhysicsBody> T collideWith(BoxCollider otherBox, Class tClass){
         for (PhysicsBody physicsObject : physicsObjects){
             if (physicsObject.isActive()){
-                if (physicsObject instanceof Enemy && physicsObject.getBoxCollider().intersects(otherBox)){
-                    return (Enemy) physicsObject;
-                }
-            }
-        }
-        return null;
-    }
-
-    public static Player collideWithPlayer(BoxCollider otherBox){
-        for (PhysicsBody physicsObject : physicsObjects){
-            if (physicsObject.isActive()){
-                if (physicsObject instanceof Player && physicsObject.getBoxCollider().intersects(otherBox)){
-                    return (Player) physicsObject;
+                if (physicsObject.getClass().equals(tClass) && physicsObject.getBoxCollider().intersects(otherBox)){
+                    return (T) physicsObject;
                 }
             }
         }

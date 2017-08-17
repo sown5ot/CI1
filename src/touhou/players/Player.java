@@ -93,7 +93,6 @@ public class Player extends GameObject implements PhysicsBody{
 
     public void getDamage(int damage){
         healthPoint -= damage;
-//        if (healthPoint == 0) this.setActive(false);
     }
 
     public int getHealthPoint() {
