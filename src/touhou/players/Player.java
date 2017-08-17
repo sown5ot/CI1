@@ -63,7 +63,9 @@ public class Player extends GameObject implements PhysicsBody{
 
         PlayerSphere rightSphere = new PlayerSphere();
         rightSphere.getPosition().set(20, 0);
+        rightSphere.setReverse(true);
         nextGameObjects.add(rightSphere);
+
     }
 
     private void castSpell() {

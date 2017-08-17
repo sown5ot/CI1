@@ -11,14 +11,18 @@ import tklibs.SpriteUtils;
 public class PlayerSphere extends GameObject implements PhysicsBody{
     private BoxCollider boxCollider;
     private FrameCounter frameCounter;
+    private Animation animation;
 
     public PlayerSphere() {
         super();
-        this.renderer = new Animation(3,
+
+        animation = new Animation(15,
                 SpriteUtils.loadImage("assets/images/sphere/0.png"),
                 SpriteUtils.loadImage("assets/images/sphere/1.png"),
                 SpriteUtils.loadImage("assets/images/sphere/2.png"),
                 SpriteUtils.loadImage("assets/images/sphere/3.png"));
+
+        this.renderer = animation;
     }
 
     public void run(Vector2D parentPosition){
@@ -27,5 +31,9 @@ public class PlayerSphere extends GameObject implements PhysicsBody{
 
     public BoxCollider getBoxCollider() {
         return boxCollider;
+    }
+
+    public void setReverse(boolean reverse){
+        this.animation.setReverseAnimation(reverse);
     }
 }

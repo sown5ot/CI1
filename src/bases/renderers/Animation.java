@@ -33,10 +33,21 @@ public class Animation implements Renderer{
     private void update() {
         if (frameCounter.run()){
             frameCounter.reset();
-            currentImageIndex++;
-            if (currentImageIndex >= images.size()){
-                currentImageIndex = 0;
+            if (!reverseAnimation){
+                currentImageIndex++;
+                if (currentImageIndex >= images.size()){
+                    currentImageIndex = 0;
+                }
+            }else {
+                currentImageIndex--;
+                if (currentImageIndex <= 0){
+                    currentImageIndex = images.size() - 1;
+                }
             }
         }
+    }
+
+    public void setReverseAnimation(boolean reverseAnimation) {
+        this.reverseAnimation = reverseAnimation;
     }
 }
