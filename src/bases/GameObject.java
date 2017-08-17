@@ -55,17 +55,6 @@ public class GameObject {
         newGameObjects.add(gameObject);
     }
 
-//
-//    public void setTransparent(BufferedImage image){
-//        int height = image.getHeight();
-//        int width = image.getWidth();
-//        for (int y = 0; y < height; y++){
-//            for (int x = 0; x < width; x++){
-//                image.setRGB(x ,y , 0);
-//            }
-//        }
-//    }
-
     public void run(Vector2D parentPosition){
         screenPosition = parentPosition.add(position);
         for (GameObject nextObject : nextGameObjects) nextObject.run(screenPosition);

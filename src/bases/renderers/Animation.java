@@ -13,11 +13,13 @@ public class Animation implements Renderer{
     private List<BufferedImage> images;
     private FrameCounter frameCounter;
     private int currentImageIndex;
+    private boolean reverseAnimation;
 
     public Animation(int frameDelay, BufferedImage... images){
         this.images = Arrays.asList(images);
         this.frameCounter = new FrameCounter(frameDelay);
         this.currentImageIndex = 0;
+        this.reverseAnimation = false;
     }
 
     public void render(Graphics2D g2d, Vector2D position){

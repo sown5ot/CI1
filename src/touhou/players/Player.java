@@ -11,6 +11,7 @@ import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
 import touhou.enemies.Enemy;
 import touhou.inputs.InputManager;
+import touhou.spheres.PlayerSphere;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -40,6 +41,7 @@ public class Player extends GameObject implements PhysicsBody{
         boxCollider = new BoxCollider(20, 20);
         this.nextGameObjects.add(boxCollider);
         healthPoint = 15;
+        addSpheres();
     }
 
     public void run(Vector2D parentPosition){
@@ -50,8 +52,18 @@ public class Player extends GameObject implements PhysicsBody{
         if (inputManager.rightPressed)position.addUp(SPEED, 0);
 
         if (constraints != null)constraints.make(position);
-
             castSpell();
+
+    }
+
+    private void addSpheres() {
+        PlayerSphere leftSphere = new PlayerSphere();
+        leftSphere.getPosition().set(-20, 0);
+        nextGameObjects.add(leftSphere);
+
+        PlayerSphere rightSphere = new PlayerSphere();
+        rightSphere.getPosition().set(20, 0);
+        nextGameObjects.add(rightSphere);
     }
 
     private void castSpell() {
