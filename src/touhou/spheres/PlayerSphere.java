@@ -15,18 +15,27 @@ public class PlayerSphere extends GameObject implements PhysicsBody{
 
     public PlayerSphere() {
         super();
-
         animation = new Animation(15,
                 SpriteUtils.loadImage("assets/images/sphere/0.png"),
                 SpriteUtils.loadImage("assets/images/sphere/1.png"),
                 SpriteUtils.loadImage("assets/images/sphere/2.png"),
                 SpriteUtils.loadImage("assets/images/sphere/3.png"));
-
         this.renderer = animation;
+        frameCounter = new FrameCounter(10);
     }
 
     public void run(Vector2D parentPosition){
         super.run(parentPosition);
+        shoot();
+    }
+
+    private void shoot() {
+        if (frameCounter.run()) {
+            frameCounter.reset();
+            SphereBullet sphereBullet = new SphereBullet();
+            sphereBullet.getPosition().set(this.position);
+            nextGameObjects.add(sphereBullet);
+        }
     }
 
     public BoxCollider getBoxCollider() {

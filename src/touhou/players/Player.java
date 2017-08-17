@@ -27,6 +27,7 @@ public class Player extends GameObject implements PhysicsBody{
     private FrameCounter frameCounter;
     private boolean lockSpell;
     private final int SPEED = 5;
+    private final int SPHERERANGE = 20;
     private BoxCollider boxCollider;
     public boolean isActive;
     private int healthPoint;
@@ -52,20 +53,18 @@ public class Player extends GameObject implements PhysicsBody{
         if (inputManager.rightPressed)position.addUp(SPEED, 0);
 
         if (constraints != null)constraints.make(position);
-            castSpell();
-
+        castSpell();
     }
 
     private void addSpheres() {
         PlayerSphere leftSphere = new PlayerSphere();
-        leftSphere.getPosition().set(-20, 0);
+        leftSphere.getPosition().set(-SPHERERANGE, 0);
         nextGameObjects.add(leftSphere);
 
         PlayerSphere rightSphere = new PlayerSphere();
-        rightSphere.getPosition().set(20, 0);
+        rightSphere.getPosition().set(SPHERERANGE, 0);
         rightSphere.setReverse(true);
         nextGameObjects.add(rightSphere);
-
     }
 
     private void castSpell() {

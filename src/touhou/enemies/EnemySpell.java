@@ -22,7 +22,6 @@ public class EnemySpell extends GameObject implements PhysicsBody{
         renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/enemies/bullets/blue.png"));
         boxCollider = new BoxCollider(10, 10);
         this.nextGameObjects.add(boxCollider);
-
     }
 
     public void run(Vector2D parentPosition){
