@@ -17,13 +17,13 @@ import java.awt.image.BufferedImage;
  * Created by Son Hoang on 8/2/2017.
  */
 public class PlayerSpell extends GameObject implements PhysicsBody{
-    private final int SPEED = 5;
+    private final int SPEED = 10;
     private BoxCollider boxCollider;
 
     public PlayerSpell() {
         super();
 //        renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/player-spells/a/0.png"));
-        renderer = new Animation(3,
+        renderer = new Animation(5,
                 SpriteUtils.loadImage("assets/images/player-spells/a/0.png"),
                 SpriteUtils.loadImage("assets/images/player-spells/a/1.png"),
                 SpriteUtils.loadImage("assets/images/player-spells/a/2.png"),

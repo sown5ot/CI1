@@ -5,14 +5,16 @@ import bases.GameObject;
 import bases.Vector2D;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
+import bases.physics.PhysicsPool;
 import bases.renderers.Animation;
 import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
+import touhou.enemies.Enemy;
 
 public class SphereBullet extends GameObject implements PhysicsBody {
     private BoxCollider boxCollider;
     private FrameCounter frameCounter;
-    private final int SPEED = 5;
+    private final int SPEED = 10;
 
     public SphereBullet(){
         super();
@@ -30,6 +32,15 @@ public class SphereBullet extends GameObject implements PhysicsBody {
     public void run(Vector2D parentPosition){
         super.run(parentPosition);
         position.addUp(0, -SPEED);
+        hitEnemy();
+    }
+
+    private void hitEnemy() {
+        Enemy hitEnemy = PhysicsPool.collideWith(this.boxCollider, Enemy.class);
+        if (hitEnemy != null){
+            hitEnemy.setActive(false);
+            this.isActive = false;
+        }
     }
 
     @Override

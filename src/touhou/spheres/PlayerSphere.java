@@ -8,6 +8,7 @@ import bases.physics.PhysicsBody;
 import bases.pool.GameObjectPool;
 import bases.renderers.Animation;
 import tklibs.SpriteUtils;
+import touhou.players.Player;
 
 public class PlayerSphere extends GameObject implements PhysicsBody{
     private BoxCollider boxCollider;
@@ -27,16 +28,6 @@ public class PlayerSphere extends GameObject implements PhysicsBody{
 
     public void run(Vector2D parentPosition){
         super.run(parentPosition);
-        shoot();
-    }
-
-    private void shoot() {
-        if (frameCounter.run()) {
-            frameCounter.reset();
-            SphereBullet sphereBullet = new SphereBullet();
-            sphereBullet.getPosition().set(this.position);
-            nextGameObjects.add(sphereBullet);
-        }
     }
 
     public BoxCollider getBoxCollider() {

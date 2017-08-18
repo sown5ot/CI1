@@ -13,6 +13,7 @@ import tklibs.SpriteUtils;
 import touhou.enemies.Enemy;
 import touhou.inputs.InputManager;
 import touhou.spheres.PlayerSphere;
+import touhou.spheres.SphereBullet;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -27,17 +28,18 @@ public class Player extends GameObject implements PhysicsBody{
     private Constraints constraints;
     private FrameCounter frameCounter;
     private boolean lockSpell;
-    private final int SPEED = 5;
-    private final int SPHERERANGE = 20;
+    private final int SPEED = 3;
+    private final int SPHERERANGE = 30;
     private BoxCollider boxCollider;
     public boolean isActive;
     private int healthPoint;
+    private int enemyKill;
 
     //constructor
     public Player(){
         super();
         renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/players/straight/0.png"));
-        frameCounter = new FrameCounter(3);
+        frameCounter = new FrameCounter(5);
         lockSpell = false;
         isActive = true;
         boxCollider = new BoxCollider(20, 20);
@@ -72,6 +74,13 @@ public class Player extends GameObject implements PhysicsBody{
         if (inputManager.xPressed && !lockSpell) {
             PlayerSpell newSpell = GameObjectPool.reuse(PlayerSpell.class);
             newSpell.getPosition().set(this.position);
+
+            SphereBullet leftSphereBullet = GameObjectPool.reuse(SphereBullet.class);
+            leftSphereBullet.getPosition().set(this.position.add(-SPHERERANGE, 0));
+
+            SphereBullet rightSphereBullet = GameObjectPool.reuse(SphereBullet.class);
+            rightSphereBullet.getPosition().set(this.position.add(SPHERERANGE, 0));
+
             lockSpell = true;
         }
 
