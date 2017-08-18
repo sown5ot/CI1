@@ -5,6 +5,7 @@ import bases.GameObject;
 import bases.Vector2D;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
+import bases.pool.GameObjectPool;
 import bases.renderers.Animation;
 import tklibs.SpriteUtils;
 

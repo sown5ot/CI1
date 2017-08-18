@@ -7,6 +7,7 @@ import bases.Vector2D;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import bases.physics.PhysicsPool;
+import bases.pool.GameObjectPool;
 import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
 import touhou.enemies.Enemy;
@@ -36,7 +37,7 @@ public class Player extends GameObject implements PhysicsBody{
     public Player(){
         super();
         renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/players/straight/0.png"));
-        frameCounter = new FrameCounter(5);
+        frameCounter = new FrameCounter(3);
         lockSpell = false;
         isActive = true;
         boxCollider = new BoxCollider(20, 20);
@@ -69,9 +70,8 @@ public class Player extends GameObject implements PhysicsBody{
 
     private void castSpell() {
         if (inputManager.xPressed && !lockSpell) {
-            PlayerSpell newSpell = new PlayerSpell();
+            PlayerSpell newSpell = GameObjectPool.reuse(PlayerSpell.class);
             newSpell.getPosition().set(this.position);
-            GameObject.add(newSpell);
             lockSpell = true;
         }
 

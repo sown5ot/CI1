@@ -57,7 +57,11 @@ public class GameObject {
 
     public void run(Vector2D parentPosition){
         screenPosition = parentPosition.add(position);
-        for (GameObject nextObject : nextGameObjects) nextObject.run(screenPosition);
+        for (GameObject nextObject : nextGameObjects) {
+            if (nextObject.isActive) {
+                nextObject.run(screenPosition);
+            }
+        }
     }
 
     public void render(Graphics2D g2d){
@@ -69,6 +73,7 @@ public class GameObject {
             if (nextGameObject.isActive) nextGameObject.render(g2d);
             }
         }
+
 
     public Vector2D getPosition() {
         return position;
