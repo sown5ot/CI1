@@ -23,6 +23,7 @@ public class Enemy extends GameObject implements PhysicsBody{
     public Enemy() {
         super();
         renderer = new Animation(7,
+                false,
                 SpriteUtils.loadImage("assets/images/enemies/level0/blue/0.png"),
                 SpriteUtils.loadImage("assets/images/enemies/level0/blue/1.png"),
                 SpriteUtils.loadImage("assets/images/enemies/level0/blue/2.png"),
@@ -65,5 +66,11 @@ public class Enemy extends GameObject implements PhysicsBody{
 
     public BoxCollider getBoxCollider(){
         return this.boxCollider;
+    }
+
+    public void getDamage(int damage) {
+        this.setActive(false);
+        EnemyExplosion enemyExplosion = GameObjectPool.reuse(EnemyExplosion.class);
+        enemyExplosion.getPosition().set(this.screenPosition);
     }
 }

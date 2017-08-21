@@ -15,6 +15,7 @@ public class GameObject {
     protected Vector2D screenPosition;
     protected ArrayList<GameObject> nextGameObjects;
     protected boolean isActive;
+    protected boolean isRecycling;
 
     private static Vector<GameObject> gameObjects = new Vector<>();
     private static Vector<GameObject> newGameObjects = new Vector<>();
@@ -45,7 +46,7 @@ public class GameObject {
 
     public static void renderAll(Graphics2D g2d){
         for (GameObject gameObject : gameObjects){
-            if (gameObject.isActive) {
+            if (gameObject.isActive && !gameObject.isRecycling) {
                 gameObject.render(g2d);
             }
         }
@@ -57,6 +58,7 @@ public class GameObject {
 
     public void run(Vector2D parentPosition){
         screenPosition = parentPosition.add(position);
+        isRecycling = false;
         for (GameObject nextObject : nextGameObjects) {
             if (nextObject.isActive) {
                 nextObject.run(screenPosition);
@@ -74,6 +76,11 @@ public class GameObject {
             }
         }
 
+
+    public void reset(){
+        this.isActive = true;
+        this.isRecycling = true;
+    }
 
     public Vector2D getPosition() {
         return position;
@@ -102,4 +109,5 @@ public class GameObject {
     public void setActive(boolean active) {
         isActive = active;
     }
+
 }

@@ -18,6 +18,7 @@ public class PlayerSphere extends GameObject implements PhysicsBody{
     public PlayerSphere() {
         super();
         animation = new Animation(15,
+                false,
                 SpriteUtils.loadImage("assets/images/sphere/0.png"),
                 SpriteUtils.loadImage("assets/images/sphere/1.png"),
                 SpriteUtils.loadImage("assets/images/sphere/2.png"),

@@ -15,10 +15,12 @@ public class SphereBullet extends GameObject implements PhysicsBody {
     private BoxCollider boxCollider;
     private FrameCounter frameCounter;
     private final int SPEED = 10;
+    private int damage = 1;
 
     public SphereBullet(){
         super();
         renderer = new Animation(7,
+                false,
                 SpriteUtils.loadImage("assets/images/sphere-bullets/0.png"),
                 SpriteUtils.loadImage("assets/images/sphere-bullets/1.png"),
                 SpriteUtils.loadImage("assets/images/sphere-bullets/2.png"),
@@ -39,7 +41,7 @@ public class SphereBullet extends GameObject implements PhysicsBody {
     private void hitEnemy() {
         Enemy hitEnemy = PhysicsPool.collideWith(this.boxCollider, Enemy.class);
         if (hitEnemy != null){
-            hitEnemy.setActive(false);
+            hitEnemy.getDamage(damage);
             this.isActive = false;
         }
     }

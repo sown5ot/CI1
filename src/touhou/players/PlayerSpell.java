@@ -19,11 +19,13 @@ import java.awt.image.BufferedImage;
 public class PlayerSpell extends GameObject implements PhysicsBody{
     private final int SPEED = 10;
     private BoxCollider boxCollider;
+    private int damage = 1;
 
     public PlayerSpell() {
         super();
 //        renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/player-spells/a/0.png"));
         renderer = new Animation(5,
+                false,
                 SpriteUtils.loadImage("assets/images/player-spells/a/0.png"),
                 SpriteUtils.loadImage("assets/images/player-spells/a/1.png"),
                 SpriteUtils.loadImage("assets/images/player-spells/a/2.png"),
@@ -42,7 +44,7 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
     private void hitEnemy() {
         Enemy hitEnemy = PhysicsPool.collideWith(this.boxCollider, Enemy.class);
         if (hitEnemy != null){
-            hitEnemy.setActive(false);
+            hitEnemy.getDamage(damage);
             this.isActive = false;
         }
     }
