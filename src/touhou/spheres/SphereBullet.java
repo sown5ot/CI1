@@ -33,6 +33,7 @@ public class SphereBullet extends GameObject implements PhysicsBody {
         super.run(parentPosition);
         position.addUp(0, -SPEED);
         hitEnemy();
+        setDeactivate();
     }
 
     private void hitEnemy() {

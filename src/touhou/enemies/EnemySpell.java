@@ -28,6 +28,7 @@ public class EnemySpell extends GameObject implements PhysicsBody{
         super.run(parentPosition);
         position.addUp(0, SPEED);
         hitPlayer();
+        setDeactivate();
     }
 
     public void hitPlayer(){

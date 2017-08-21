@@ -5,6 +5,7 @@ import bases.Vector2D;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import bases.physics.PhysicsPool;
+import bases.pool.GameObjectPool;
 import bases.renderers.Animation;
 import bases.renderers.Renderer;
 import tklibs.SpriteUtils;
@@ -39,6 +40,7 @@ public class Enemy extends GameObject implements PhysicsBody{
         fly();
         castSpell();
         hitPlayer();
+        setDeactivate();
     }
 
     private void hitPlayer(){
@@ -55,9 +57,8 @@ public class Enemy extends GameObject implements PhysicsBody{
 
     private void castSpell() {
         if (frameCounter.run()) {
-            EnemySpell enemySpell = new EnemySpell();
+            EnemySpell enemySpell = GameObjectPool.reuse(EnemySpell.class);
             enemySpell.getPosition().set(this.position);
-            GameObject.add(enemySpell);
             frameCounter.reset();
         }
     }

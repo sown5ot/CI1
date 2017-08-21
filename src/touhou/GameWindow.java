@@ -11,6 +11,7 @@ import touhou.images.Background;
 import touhou.inputs.InputManager;
 import touhou.players.Player;
 import touhou.players.PlayerSpell;
+import touhou.settings.Settings;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -19,6 +20,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by huynq on 7/29/17.
@@ -27,9 +29,10 @@ public class GameWindow extends Frame {
     private long lastTimeUpdate;
     private long currentTime;
 
+    private BufferedImage blackBackground;
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
-    private Background background = new Background();
+    private Background background;
 
     Player player = new Player();
     InputManager inputManager = new InputManager();
@@ -50,15 +53,13 @@ public class GameWindow extends Frame {
     }
 
     private void addBackground() {
-        background.getPosition().set(384 / 2, -1200 / 2);
-        GameObject.add(background);
+        GameObject.add(new Background());
     }
 
     private void addPlayer() {
         player.getPosition().set(384 / 2, 600);
         player.setInputManager(inputManager);
         player.setConstraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
-
         GameObject.add(player);
     }
 
@@ -67,13 +68,16 @@ public class GameWindow extends Frame {
     }
 
     private void setupWindow() {
-        this.setSize(1024, 768);
-
+        this.setSize(Settings.instance.getWindowWidth(), Settings.instance.getWindowHeight());
         this.setTitle("Touhou - Remade by Sown5ot");
         this.setVisible(true);
 
         this.backbufferImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
         this.backbufferGraphics = (Graphics2D) this.backbufferImage.getGraphics();
+        this.blackBackground = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D backgroundGraphics = (Graphics2D) this.blackBackground.getGraphics();
+        backgroundGraphics.setColor(Color.black);
+        backgroundGraphics.fillRect(0, 0, getWidth(), getHeight());
 
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -115,15 +119,9 @@ public class GameWindow extends Frame {
         GameObject.runAll();
     }
 
-    public void update(Graphics g){
-        g.drawImage(backbufferImage, 0, 0, null);
-    }
-
     private void render() {
-        backbufferGraphics.setColor(Color.black);
-        backbufferGraphics.fillRect(0, 0, 1024, 768);
+        backbufferGraphics.drawImage(blackBackground, 0, 0, null);
         GameObject.renderAll(backbufferGraphics);
-
-        repaint();
+        getGraphics().drawImage(backbufferImage, 0, 0, null);
     }
 }

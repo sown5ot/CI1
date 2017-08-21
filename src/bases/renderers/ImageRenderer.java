@@ -21,4 +21,7 @@ public class ImageRenderer implements Renderer{
                 null);
     }
 
+    public Vector2D getAnchor() {
+        return anchor;
+    }
 }

@@ -79,6 +79,10 @@ public class GameObject {
         return position;
     }
 
+    public void setDeactivate() {
+        if (position.y <= 0 || position.y >= 768) this.isActive = false;
+    }
+
     public void setPosition(Vector2D position) {
         this.position = position;
     }

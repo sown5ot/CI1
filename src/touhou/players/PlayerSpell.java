@@ -39,10 +39,6 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
         setDeactivate();
     }
 
-    public void setDeactivate(){
-        if (this.screenPosition.y < 0 ) this.isActive = false;
-    }
-
     private void hitEnemy() {
         Enemy hitEnemy = PhysicsPool.collideWith(this.boxCollider, Enemy.class);
         if (hitEnemy != null){
