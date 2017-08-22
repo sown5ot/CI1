@@ -11,9 +11,10 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 
 public class Background extends GameObject {
-    private final int SPEED = 1;
+    private final int SPEED = 5;
     private final int imageHeight;
     private ImageRenderer imageRenderer;
+    private boolean end;
 
     public Background() {
         super();
@@ -22,6 +23,7 @@ public class Background extends GameObject {
         imageRenderer.getAnchor().set(0, 1);
         position.set(0, Settings.instance.getGameWindowHeight());
         this.renderer = imageRenderer;
+        end = false;
     }
 
     public void run(Vector2D parentPosition){
@@ -31,7 +33,13 @@ public class Background extends GameObject {
 
     private void move() {
         position.addUp(0, SPEED);
-        if (position.y >= imageHeight) position.y = imageHeight;
+        if (position.y >= imageHeight){
+            end = true;
+            position.y = imageHeight;
+        }
     }
 
+    public boolean isEnd() {
+        return end;
+    }
 }

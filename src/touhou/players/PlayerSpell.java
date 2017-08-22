@@ -8,6 +8,7 @@ import bases.renderers.Animation;
 import tklibs.SpriteUtils;
 import bases.Vector2D;
 import bases.renderers.ImageRenderer;
+import touhou.bosses.EnemyBoss;
 import touhou.enemies.Enemy;
 
 import java.awt.*;
@@ -23,7 +24,6 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
 
     public PlayerSpell() {
         super();
-//        renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/player-spells/a/0.png"));
         renderer = new Animation(5,
                 false,
                 SpriteUtils.loadImage("assets/images/player-spells/a/0.png"),
@@ -38,6 +38,7 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
         super.run(parentPosition);
         position.addUp(0, -SPEED);
         hitEnemy();
+        hitBoss();
         setDeactivate();
     }
 
@@ -45,6 +46,14 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
         Enemy hitEnemy = PhysicsPool.collideWith(this.boxCollider, Enemy.class);
         if (hitEnemy != null){
             hitEnemy.getDamage(damage);
+            this.isActive = false;
+        }
+    }
+
+    private void hitBoss(){
+        EnemyBoss hitBoss = PhysicsPool.collideWith(this.boxCollider, EnemyBoss.class);
+        if (hitBoss != null){
+            hitBoss.getDamage(damage);
             this.isActive = false;
         }
     }

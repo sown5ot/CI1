@@ -41,7 +41,12 @@ public class GameWindow extends Frame {
         pack();
         setupGameLoop();
         setupWindow();
+        setupLevel1();
+    }
+
+    private void setupLevel1() {
         level1 = new Scene1();
+        level1.init();
     }
 
     private void setupGameLoop() {
