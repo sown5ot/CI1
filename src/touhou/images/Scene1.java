@@ -15,7 +15,7 @@ public class Scene1 {
     public void init() {
         addBackground();
         addPlayer();
-        enemySpawn();
+//        enemySpawn();
         addBoss();
     }
 

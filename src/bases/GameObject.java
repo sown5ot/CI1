@@ -4,6 +4,7 @@ import bases.physics.PhysicsBody;
 import bases.physics.PhysicsPool;
 import bases.renderers.ImageRenderer;
 import bases.renderers.Renderer;
+import touhou.settings.Settings;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class GameObject {
     protected ArrayList<GameObject> nextGameObjects;
     protected boolean isActive;
     protected boolean isRecycling;
+    protected Settings settings;
 
     private static Vector<GameObject> gameObjects = new Vector<>();
     private static Vector<GameObject> newGameObjects = new Vector<>();
@@ -25,6 +27,7 @@ public class GameObject {
         screenPosition = new Vector2D();
         position = new Vector2D();
         isActive = true;
+        settings = Settings.instance;
     }
 
     public static void runAll(){
@@ -87,7 +90,11 @@ public class GameObject {
     }
 
     public void setDeactivate() {
-        if (position.y <= 0 || position.y >= 768) this.isActive = false;
+        if (position.y < 0 ||
+                position.y > settings.getGameWindowHeight() ||
+                position.x < 0 ||
+                position.x > settings.getGameWindowWidth())
+            this.isActive = false;
     }
 
     public void setPosition(Vector2D position) {
