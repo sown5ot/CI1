@@ -33,30 +33,37 @@ public class Player extends GameObject implements PhysicsBody{
     private BoxCollider boxCollider;
     public boolean isActive;
     private int healthPoint;
-    private int enemyKill;
+    private Vector2D velocity;
+    private PlayerMovement playerMovement;
 
     //constructor
     public Player(){
         super();
-        renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/players/straight/0.png"));
+        playerMovement = new PlayerMovement();
+        this.renderer = playerMovement;
         frameCounter = new FrameCounter(5);
         lockSpell = false;
         isActive = true;
         boxCollider = new BoxCollider(20, 20);
         this.nextGameObjects.add(boxCollider);
         healthPoint = 15;
+        velocity = new Vector2D();
         addSpheres();
     }
 
     public void run(Vector2D parentPosition){
         super.run(parentPosition);
-        if (inputManager.upPressed)position.addUp(0, -SPEED);
-        if (inputManager.downPressed)position.addUp(0, SPEED);
-        if (inputManager.leftPressed)position.addUp(-SPEED, 0);
-        if (inputManager.rightPressed)position.addUp(SPEED, 0);
+
+        velocity.set(0, 0);
+        if (inputManager.upPressed) velocity.y -= SPEED;
+        if (inputManager.downPressed) velocity.y += SPEED;
+        if (inputManager.leftPressed) velocity.x -= SPEED;
+        if (inputManager.rightPressed) velocity.x += SPEED;
+        position.addUp(velocity);
 
         if (constraints != null)constraints.make(position);
         castSpell();
+        playerMovement.update(this);
     }
 
     private void addSpheres() {
@@ -124,5 +131,9 @@ public class Player extends GameObject implements PhysicsBody{
     @Override
     public BoxCollider getBoxCollider() {
         return boxCollider;
+    }
+
+    public Vector2D getVelocity() {
+        return velocity;
     }
 }

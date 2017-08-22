@@ -8,6 +8,7 @@ import touhou.enemies.EnemySpell;
 import bases.Constraints;
 import bases.FrameCounter;
 import touhou.images.Background;
+import touhou.images.Scene1;
 import touhou.inputs.InputManager;
 import touhou.players.Player;
 import touhou.players.PlayerSpell;
@@ -32,35 +33,15 @@ public class GameWindow extends Frame {
     private BufferedImage blackBackground;
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
-    private Background background;
 
-    Player player = new Player();
-    InputManager inputManager = new InputManager();
-    private EnemySpawner enemySpawner = new EnemySpawner();
-
+    private Scene1 level1;
+    InputManager inputManager = InputManager.instance;
 
     public GameWindow() {
-        pack(); //ép vào inset (phần người dùng nhìn được)
-        addBackground();
-        addPlayer();
-        enemySpawn();
+        pack();
         setupGameLoop();
         setupWindow();
-    }
-
-    private void enemySpawn() {
-        GameObject.add(enemySpawner);
-    }
-
-    private void addBackground() {
-        GameObject.add(new Background());
-    }
-
-    private void addPlayer() {
-        player.getPosition().set(384 / 2, 600);
-        player.setInputManager(inputManager);
-        player.setConstraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
-        GameObject.add(player);
+        level1 = new Scene1();
     }
 
     private void setupGameLoop() {
@@ -99,6 +80,8 @@ public class GameWindow extends Frame {
                 inputManager.keyReleased(e);
             }
         });
+
+        Settings.instance.setWindowInsets(this.getInsets());
     }
 
     public void loop() {
