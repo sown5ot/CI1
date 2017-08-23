@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 
 public class Background extends GameObject {
-    private final int SPEED = 5;
+    private final int SPEED = 1;
     private final int imageHeight;
     private ImageRenderer imageRenderer;
     private boolean end;

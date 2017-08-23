@@ -14,9 +14,10 @@ import touhou.enemies.EnemyExplosion;
 public class EnemyBoss extends GameObject implements PhysicsBody {
     private BoxCollider boxCollider;
     private Animation animation;
-    private int HP = 5000;
+    private int HP = 100;
     private FrameCounter shootCounter;
     private boolean shootLock;
+    private FrameCounter frameCounter;
 
     public EnemyBoss(){
         super();
@@ -31,11 +32,12 @@ public class EnemyBoss extends GameObject implements PhysicsBody {
                 SpriteUtils.loadImage("assets/images/enemies/level0/black/7.png"),
                 SpriteUtils.loadImage("assets/images/enemies/level0/black/8.png")
                 );
-        shootCounter = new FrameCounter(15);
+        shootCounter = new FrameCounter(150);
         this.renderer = animation;
         boxCollider = new BoxCollider(20, 20);
         this.nextGameObjects.add(boxCollider);
         shootLock = false;
+        frameCounter = new FrameCounter(100);
     }
 
     public void run(Vector2D parentPosition){
@@ -54,38 +56,60 @@ public class EnemyBoss extends GameObject implements PhysicsBody {
 
     private void shootType1() {
         if (!shootLock) {
-            createBulletType1();
+            createBulletType1(0, 0, 0, 1);
+            createBulletType1(0, 10, 0, 1);
+            createBulletType1(0, 20, 0, 1);
+            createBulletType1(0, 30, 0, 1);
+            createBulletType1(0, 40, 0, 1);
+
+            createBulletType1(0, 0, 0.5f, 1);
+            createBulletType1(10, 0, 0.5f, 1);
+            createBulletType1(20, 0, 0.5f, 1);
+            createBulletType1(30, 0, 0.5f, 1);
+            createBulletType1(40, 0, 0.5f, 1);
+//
+            createBulletType1(5, 0, 0.25f, 1);
+            createBulletType1(15, 0, 0.25f, 1);
+            createBulletType1(25, 0, 0.25f, 1);
+            createBulletType1(35, 0, 0.25f, 1);
+            createBulletType1(45, 0, 0.25f, 1);
+
+            createBulletType1(0, 0, -0.5f, 1);
+            createBulletType1(-10, 0, -0.5f, 1);
+            createBulletType1(-20, 0, -0.5f, 1);
+            createBulletType1(-30, 0, -0.5f, 1);
+            createBulletType1(-40, 0, -0.5f, 1);
+
+            createBulletType1(-5, 0, -0.25f, 1);
+            createBulletType1(-15, 0, -0.25f, 1);
+            createBulletType1(-25, 0, -0.25f, 1);
+            createBulletType1(-35, 0, -0.25f, 1);
+            createBulletType1(-45, 0, -0.25f, 1);
 //            shootLock = true;
         }
     }
 
-    private void createBulletType1() {
+    private void createBulletType1(float posX, float posY, float speedX, float speedY) {
         BossBullets bossBullet = GameObjectPool.reuse(BossBullets.class);
-        bossBullet.getPosition().set(this.position);
-        float speedX;
-        float speedY;
-        double slice = 2 * Math.PI / 360;
-        for (int i = 0; i <= 360; i++) {
-            double angle = slice * i;
-            speedX = (float) (Math.cos(angle));
-            speedY = (float) (Math.sin(angle));
-            bossBullet.setDrY(speedY);
-            bossBullet.setDrX(speedX);
-        }
+        bossBullet.getPosition().set(this.position.add(posX, posY));
+        bossBullet.setDrY(speedY);
+        bossBullet.setDrX(speedX);
     }
 
     private void move() {
-        if (screenPosition.y < 100){
+        if (screenPosition.y < 150) {
             position.addUp(0, 3);
-        }
+            }
     }
 
     public void getDamage(int damage) {
         HP -= damage;
-        if (HP == 0) {
-        this.setActive(false);
         EnemyExplosion enemyExplosion = GameObjectPool.reuse(EnemyExplosion.class);
         enemyExplosion.getPosition().set(this.screenPosition);
+        if (HP <= 0) {
+            this.setActive(false);
+            BossExplosion bossExplosion = GameObjectPool.reuse(BossExplosion.class);
+            bossExplosion.getPosition().set(this.screenPosition);
         }
     }
 

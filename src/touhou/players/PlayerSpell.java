@@ -20,7 +20,7 @@ import java.awt.image.BufferedImage;
 public class PlayerSpell extends GameObject implements PhysicsBody{
     private final int SPEED = 10;
     private BoxCollider boxCollider;
-    private int damage = 1;
+    private int damage = 4;
 
     public PlayerSpell() {
         super();

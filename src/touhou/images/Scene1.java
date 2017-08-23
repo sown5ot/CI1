@@ -1,6 +1,7 @@
 package touhou.images;
 
 import bases.Constraints;
+import bases.FrameCounter;
 import bases.GameObject;
 import touhou.bosses.EnemyBoss;
 import touhou.enemies.EnemySpawner;
@@ -11,11 +12,16 @@ import touhou.settings.Settings;
 public class Scene1 {
     private Settings settings = Settings.instance;
     private Background background = new Background();
+    private FrameCounter frameCounter;
+
+    public Scene1(){
+        frameCounter = new FrameCounter(250);
+    }
 
     public void init() {
         addBackground();
         addPlayer();
-//        enemySpawn();
+        enemySpawn();
         addBoss();
     }
 
@@ -32,7 +38,7 @@ public class Scene1 {
                 settings.getWindowInsets().left,
                 settings.getGameWindowWidth())
         );
-        player.getPosition().set(384 / 2, 600);
+        player.getPosition().set(settings.getGameWindowWidth() / 2, 600);
         GameObject.add(player);
     }
 

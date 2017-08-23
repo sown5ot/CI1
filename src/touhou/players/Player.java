@@ -11,6 +11,7 @@ import bases.pool.GameObjectPool;
 import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
 import touhou.enemies.Enemy;
+import touhou.enemies.EnemyExplosion;
 import touhou.inputs.InputManager;
 import touhou.spheres.PlayerSphere;
 import touhou.spheres.SphereBullet;
@@ -122,6 +123,8 @@ public class Player extends GameObject implements PhysicsBody{
 
     public void getDamage(int damage){
         healthPoint -= damage;
+        EnemyExplosion enemyExplosion = GameObjectPool.reuse(EnemyExplosion.class);
+        enemyExplosion.getPosition().set(this.position);
     }
 
     public int getHealthPoint() {

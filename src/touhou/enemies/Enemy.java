@@ -19,6 +19,7 @@ public class Enemy extends GameObject implements PhysicsBody{
     private FrameCounter frameCounter;
     private final int SPEED = 2;
     private BoxCollider boxCollider;
+    private int HP;
 
     public Enemy() {
         super();
@@ -31,6 +32,7 @@ public class Enemy extends GameObject implements PhysicsBody{
         frameCounter = new FrameCounter(70);
         boxCollider =  new BoxCollider(15, 30);
         this.nextGameObjects.add(boxCollider);
+        HP = 20;
     }
 
     public void run(Vector2D parentPosition){
@@ -69,8 +71,11 @@ public class Enemy extends GameObject implements PhysicsBody{
     }
 
     public void getDamage(int damage) {
-        this.setActive(false);
+        HP -= damage;
         EnemyExplosion enemyExplosion = GameObjectPool.reuse(EnemyExplosion.class);
         enemyExplosion.getPosition().set(this.screenPosition);
+        if (HP <= 0) {
+            this.setActive(false);
+        }
     }
 }

@@ -9,13 +9,13 @@ import bases.physics.PhysicsPool;
 import bases.renderers.Animation;
 import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
+import touhou.bosses.EnemyBoss;
 import touhou.enemies.Enemy;
 
 public class SphereBullet extends GameObject implements PhysicsBody {
     private BoxCollider boxCollider;
-    private FrameCounter frameCounter;
     private final int SPEED = 10;
-    private int damage = 1;
+    private int damage = 2;
 
     public SphereBullet(){
         super();
@@ -35,6 +35,7 @@ public class SphereBullet extends GameObject implements PhysicsBody {
         super.run(parentPosition);
         position.addUp(0, -SPEED);
         hitEnemy();
+        hitBoss();
         setDeactivate();
     }
 
@@ -42,6 +43,14 @@ public class SphereBullet extends GameObject implements PhysicsBody {
         Enemy hitEnemy = PhysicsPool.collideWith(this.boxCollider, Enemy.class);
         if (hitEnemy != null){
             hitEnemy.getDamage(damage);
+            this.isActive = false;
+        }
+    }
+
+    private void hitBoss(){
+        EnemyBoss hitBoss = PhysicsPool.collideWith(this.boxCollider, EnemyBoss.class);
+        if (hitBoss != null){
+            hitBoss.getDamage(damage);
             this.isActive = false;
         }
     }

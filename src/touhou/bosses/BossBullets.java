@@ -4,15 +4,18 @@ import bases.GameObject;
 import bases.Vector2D;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
+import bases.physics.PhysicsPool;
 import bases.renderers.Animation;
 import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
+import touhou.players.Player;
 
 public class BossBullets extends GameObject implements PhysicsBody {
     private BoxCollider boxCollider;
     private int typeBullet;
     private float drX;
     private float drY;
+    private int damage = 1;
 
 //    public BossBullets(int typeBullet, float dirX, float dirY){
 //        super();
@@ -41,6 +44,7 @@ public class BossBullets extends GameObject implements PhysicsBody {
         super();
         renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/enemies/bullets/cyan.png"));
         boxCollider = new BoxCollider(5, 5);
+        this.nextGameObjects.add(boxCollider);
     }
 
     public void run(Vector2D parentPosition){
@@ -55,7 +59,11 @@ public class BossBullets extends GameObject implements PhysicsBody {
     }
 
     private void hitPlayer(){
-
+        Player player = PhysicsPool.collideWith(this.boxCollider, Player.class);
+        if (player != null){
+            player.getDamage(damage);
+            this.isActive = false;
+        }
     }
 
     @Override
